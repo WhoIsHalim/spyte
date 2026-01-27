@@ -1,0 +1,40 @@
+{
+  "update_url": "https://clients2.google.com/service/update2/crx",
+  "manifest_version": 3,
+  "name": "Spyte",
+  "version": "2.0.0",
+  "author": "Halim",
+  "description": "Monitor HTTP GET/POST requests. XML/JSON Viewer/Formatter for request and response body. REST Client: send GET/POST/PATCH requests.",
+  "icons": {
+    "16": "images/spyte16.png",
+    "32": "images/spyte32.png",
+    "48": "images/spyte48.png",
+    "128": "images/spyte128.png"
+  },
+  "background": {
+    "service_worker": "js/bg.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "all_frames": true,
+      "match_about_blank": true,
+      "run_at": "document_start",
+      "js": [
+        "js/content.js"
+      ]
+    }
+  ],
+  "devtools_page": "devtools.html",
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
